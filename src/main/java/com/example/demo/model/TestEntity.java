@@ -12,7 +12,14 @@ public class TestEntity {
 	@Column
 	private String stg;
 
+	@OneToOne(mappedBy = "testEntity", fetch = FetchType.LAZY)
+	private TestEntity2 testEntity2;
+
 	public TestEntity() {
+	}
+
+	public TestEntity(String stg) {
+		this.stg = stg;
 	}
 
 	public long getId() {
@@ -30,4 +37,13 @@ public class TestEntity {
 	public String getStg() {
 		return stg;
 	}
+
+//	@Override
+//	public String toString() {
+//		return "TestEntity{" +
+//				"id=" + id +
+//				", stg='" + stg + '\'' +
+//				", testEntity2=" + testEntity2.getId() +
+//				'}';
+//	}
 }

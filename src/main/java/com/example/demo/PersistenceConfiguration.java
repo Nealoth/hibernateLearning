@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.model.TestEntity;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,12 +9,24 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
 public class PersistenceConfiguration {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	@Bean
+	public void createQueries() {
+		EntityManagerFactory entityManagerFactory = entityManager.getEntityManagerFactory();
+		entityManagerFactory.addNamedQuery("fromTestEntity", entityManager.createNativeQuery("SELECT * FROM TestEntity", TestEntity.class));
+	}
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
