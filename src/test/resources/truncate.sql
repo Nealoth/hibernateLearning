@@ -1,0 +1,2 @@
+TRUNCATE TABLE clients CASCADE;
+TRUNCATE TABLE bank_accounts CASCADE;
