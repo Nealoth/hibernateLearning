@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.model.BankAccount;
 import com.example.demo.model.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
