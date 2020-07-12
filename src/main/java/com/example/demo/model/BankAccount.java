@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -12,7 +15,7 @@ public class BankAccount {
 	private Long id;
 
 	@Column
-	private BigDecimal balance;
+	private Double balance;
 
 	@ManyToOne
 	private Client client;
