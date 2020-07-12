@@ -8,6 +8,14 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "bank_accounts")
+@FilterDef(
+		name = "doubleFilter",
+		parameters = @ParamDef(name = "doubleParam", type = "double"
+
+		)
+		,
+		defaultCondition="balance > :doubleParam"
+)
 public class BankAccount {
 
 	@Id
